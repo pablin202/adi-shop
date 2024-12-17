@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 
 import { Work_Sans, Mulish } from '@next/font/google';
 import Navbar from "@/components/Navbar";
+import { AuthProvider } from "./AuthProvider";
 
 const workSans = Work_Sans({
   subsets: ['latin'],
@@ -72,20 +73,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${workSans.className} ${mulish.className} antialiased`}
-      >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
+    <AuthProvider>
+      <html lang="en">
+        <body
+          className={`${workSans.className} ${mulish.className} antialiased`}
         >
-          <Navbar />
-          {children}
-        </ThemeProvider>
-      </body>
-    </html>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Navbar />
+            {children}
+          </ThemeProvider>
+        </body>
+      </html>
+    </AuthProvider>
   );
 }
