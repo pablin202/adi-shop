@@ -3,6 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
 
 import { Work_Sans, Mulish } from '@next/font/google';
+import Navbar from "@/components/Navbar";
 
 const workSans = Work_Sans({
   subsets: ['latin'],
@@ -81,6 +82,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <Navbar />
           {children}
         </ThemeProvider>
       </body>
